@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { v4: uuidv4 } = require('uuid');
 const { notes } = require('../../db/db');
 const { createNewNote, findById, editNote, removeNote } = require('../../lib/notes');
 
@@ -9,7 +8,7 @@ router.get('/notes', (req, res) => {
 
 router.post('/notes', (req, res) => {
 
-    // creates new note if id exists, otherwise edits existing note
+    
     if (!req.body.id) {
         req.body.id = uuidv4();
         createNewNote(req.body, notes);
